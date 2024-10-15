@@ -1,42 +1,40 @@
-// function setLanguageContent(language) {
-//     const content = {
-//         'pl': {
-//             title: 'Witaj na mojej stronie',
-//             text: 'To jest przykład strony w języku polskim.',
-//         },
-//         'en': {
-//             title: 'Welcome to my website',
-//             text: 'This is an example page in English.',
-//         }
-//     };
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+const sections = document.querySelectorAll('section');
+const navLinks =document.querySelectorAll('header nav a');
 
-//     document.getElementById('mainTitle').innerText = content[language].title;
-//     document.getElementById('mainContent').innerText = content[language].text;
-// }
+menuIcon.onclick = () =>{
+    menuIcon.classList.toggle('bx-x');
+    navbar.getElementsByClassName.toggle('active');
+}
 
-// // Funkcja do przełączania języka ręcznie
-// function switchLanguage(language) {
-//     localStorage.setItem('preferredLanguage', language);
-//     setLanguageContent(language);
-// }
+window.onscroll =()=>{
+    sections.forEach(sec =>{
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 200;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute(id);
 
-// // Funkcja wykrywająca preferencje użytkownika
-// function detectLanguage() {
-//     const savedLanguage = localStorage.getItem('preferredLanguage');
-//     if (savedLanguage) {
-//         return savedLanguage;
-//     }
+        if(top>= offset && top <offset +height){
+            navLinks.forEach(links =>{
+                links.classList.remove('active');
+                document.querySelector('header nav a [href*='+id+']').classList.add('active');
+            })
+        }
+    })
+}
 
-//     const browserLanguage = navigator.language || navigator.userLanguage;
-//     return browserLanguage.startsWith('pl') ? 'pl' : 'en';
-// }
 
-// // Inicjalizacja przy załadowaniu strony
-// (function init() {
-//     const language = detectLanguage();
-//     setLanguageContent(language);
-// })();
-// // Funkcja, która uruchomi pobieranie CV
+
+
+
+
+
+
+
+
+
+
 function downloadResume() {
     const language = document.documentElement.lang;
 
